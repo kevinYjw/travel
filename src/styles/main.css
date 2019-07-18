@@ -19,6 +19,13 @@ a{
 }
 
 
+.ellipsis{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
 .fs12{font-size:.24rem;}
 .fs13{font-size:.26rem;}
 .fs14{font-size:.28rem;}
