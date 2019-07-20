@@ -23,7 +23,6 @@
 			pages(){
 				var json = {}
 				this.list.forEach((item,index) => {
-					console.log(item,index)
 					var pageIndex = Math.floor(index / 8);
 					if(!json[pageIndex]){
 						json[pageIndex] = [];

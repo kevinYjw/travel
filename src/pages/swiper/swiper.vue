@@ -1,6 +1,6 @@
 <template>
     <div class="swiper">
-        <swiper :options="swiperOption">
+        <swiper :options="swiperOption" v-if="list.length">
             <swiper-slide v-for="item in list" :key="item.id"><img :src="item.imgUrl" alt="" width="100%"></swiper-slide>
             <div class="swiper-pagination"  slot="pagination"></div>
         </swiper>
