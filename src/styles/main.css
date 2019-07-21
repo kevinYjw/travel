@@ -12,6 +12,12 @@ ul{
 
 a{
 	color:#000;
+	text-decoration: none;
+}
+
+input{
+	border:none;
+	outline: none;
 }
 
 .flex{

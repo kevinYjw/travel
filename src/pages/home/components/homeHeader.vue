@@ -2,10 +2,12 @@
 	<div class="homeHeader flex">
 		<div class="icon  iconfont icon-arrow-left"></div>
 		<input type="text" class="inputWrap" placeholder="输入城市/景点/游玩主题">
-		<div class="address flex">
-			<div class="fs14">三亚</div>
-			<div class="icon  iconfont icon-sanjiao"></div>
-		</div>
+		<router-link to="/city">
+			<div class="address flex">
+				<div class="fs14">三亚</div>
+				<div class="icon  iconfont icon-sanjiao"></div>
+			</div>
+		</router-link>
 	</div>
 </template>
 
