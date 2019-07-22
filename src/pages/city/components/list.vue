@@ -3,16 +3,16 @@
 		<div>
 			<div class="title fs14">当前城市</div>
 			<div class="area">
-				<div class="area-item"><div class="fs14 area-btn">北京</div></div>
+				<div class="area-item"><div class="fs14 area-btn">{{city}}</div></div>
 			</div>
 			<div class="title fs14">热门城市</div>
 			<div class="area">
-				<div class="area-item" v-for="item in hotCities"><div class="fs14 area-btn">{{item.name}}</div></div>
+				<div class="area-item" v-for="item in hotCities"><div class="fs14 area-btn" @click="chooseCity(item.name)">{{item.name}}</div></div>
 			</div>
 			<div class="p-list" v-for="(item,key) in cities" :ref="key">
 				<div class="title fs14">{{key}}</div>
 				<div class="item fs14">
-					<div class="item-list" v-for="cityItem in item">{{cityItem.name}}</div>
+					<div class="item-list" v-for="cityItem in item" @click="chooseCity(cityItem.name)">{{cityItem.name}}</div>
 				</div>
 			</div>
 		</div>
@@ -21,6 +21,7 @@
 
 <script>
 	import BScroll from 'better-scroll';
+	import {mapState,mapMutations} from 'vuex';
 
 	export default {
 		name:'CityList',
@@ -33,7 +34,12 @@
 			changeList(){
 				let ele = this.$refs[this.letter][0];
 				this.scroll.scrollToElement(ele,200);
-			}
+			},
+			chooseCity(city){
+				this.changeCity(city);
+				this.$router.push('/');
+			},
+			...mapMutations(['changeCity'])
 		},
 		watch:{
 			letter(){
@@ -41,6 +47,9 @@
 					this.changeList();
 				}
 			}
+		},
+		computed:{
+			...mapState(['city']),
 		},
 		mounted(){
 			this.scroll = new BScroll(this.$refs.wrapper);

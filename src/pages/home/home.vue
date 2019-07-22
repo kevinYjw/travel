@@ -16,20 +16,25 @@
 	import HomeWeekend from './components/HomeWeekend';
 
 	import axios from 'axios';
+	import {mapState} from 'vuex';
 
 	export default {
 		name:'Home',
 		data(){
 			return{
+				loadCity:'',
 				bannerList:[],
 				iconList:[],
 				recommendList:[],
 			    weekendList:[]
 			}
 		},
+		computed:{
+			...mapState(['city'])
+		},
 		methods:{
 			getHomeInfo:function(){
-				axios('/api/index.json')
+				axios('/api/index.json?city=' + this.city)
 					.then(this.getHomeInfoSucc);
 			},
 			getHomeInfoSucc:function(res){
@@ -50,7 +55,13 @@
 			HomeWeekend
 		},
 		mounted(){
+			this.loadCity = this.city;
 			this.getHomeInfo();
+		},
+		activated(){
+			if(this.loadCity !== this.city){
+				this.getHomeInfo();
+			}
 		}
 	}
 </script>

@@ -4,7 +4,7 @@
 		<input type="text" class="inputWrap" placeholder="输入城市/景点/游玩主题">
 		<router-link to="/city">
 			<div class="address flex">
-				<div class="fs14">三亚</div>
+				<div class="fs14">{{this.city}}</div>
 				<div class="icon  iconfont icon-sanjiao"></div>
 			</div>
 		</router-link>
@@ -12,8 +12,13 @@
 </template>
 
 <script>
+	import {mapState} from 'vuex';
+
 	export default {
-		name:'homeHeader'
+		name:'homeHeader',
+		computed:{
+			...mapState(['city']),
+		}
 	}
 </script>
 
