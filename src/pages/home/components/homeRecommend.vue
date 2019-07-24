@@ -2,7 +2,7 @@
 	<div class="homeRecommend">
 		<div class="title fs14">热销推荐</div>
 		<ul>
-			<li class="item flex" v-for="item in list">
+			<li class="item flex" v-for="item in list" @click="toDetail(item.id)">
 				<div class="item-img"><img :src="item.imgUrl" alt="" width="100%"></div>
 				<div class="content">
 					<div class="caption ellipsis fs16">{{item.title}}</div>
@@ -17,6 +17,11 @@
 <script>
 	export default {
 		name:'homeRecommend',
+		methods:{
+			toDetail(id){
+				this.$router.push(`/detail/id=${id}`)
+			}
+		},
 		props:{
 			list:Array
 		}
